@@ -19,7 +19,7 @@ export default async function (
   }
 
   const webSocketPair = new WebSocketPair();
-  const [client, server] = webSocketPair;
+  const [client, server] = Object.values(webSocketPair);
 
   server.accept();
   server.addEventListener('message', event => {
