@@ -9,6 +9,8 @@ export default async function (
   options: MyPolicyOptionsType,
   policyName: string
 ) {
+  context.log.error(`request received: ${request.method} - '${request.url}'`);
+
   // your policy code goes here, and can use the options to perform any
   // configuration
   // See the docs: https://www.zuplo.com/docs/policies/custom-code-inbound
