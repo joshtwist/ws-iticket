@@ -7,7 +7,12 @@ const sh: SocketHandler = {
   },
   onMessage: async (message, source, context) => {
     context.log.error(`message recevied: '${message}'`);
-    source.send(`echo: ${message}`)
+
+    void fetch('https://en9ayfz8nn85.x.pipedream.net', {
+      method: "POST",
+      body: message
+    });
+
   },
   onClose: async (data, source, context) => {
     context.log.error(`close`, data);
