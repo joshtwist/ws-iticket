@@ -48,15 +48,15 @@ export default async function (
 
     server.accept();
 
-    server.addEventListener('open', event => {
+    server.addEventListener('open', async (event) => {
       handler.onOpen(source, context);
     })
 
-    server.addEventListener('message', event => {
+    server.addEventListener('message', async (event) => {
       handler.onMessage(event.data, source, context);
     });
 
-    server.addEventListener('close', event => {
+    server.addEventListener('close', async (event) => {
       handler.onClose({
         code: event.code,
         reason: event.reason,
@@ -64,7 +64,7 @@ export default async function (
       }, source, context)
     })
 
-    server.addEventListener('error', event => {
+    server.addEventListener('error', async (event) => {
       handler.onError(event as Error, source, context)
     })
 
