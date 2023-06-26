@@ -44,14 +44,16 @@ export default async function (
     const webSocketPair = new WebSocketPair();
     const [client, server] = Object.values(webSocketPair);
 
+    const source = client;
+
     server.accept();
 
     server.addEventListener('open', event => {
-      handler.onOpen(server, context);
+      handler.onOpen(source, context);
     })
 
     server.addEventListener('message', event => {
-      handler.onMessage(event.data, server, context);
+      handler.onMessage(event.data, source, context);
     });
 
     server.addEventListener('close', event => {
@@ -59,11 +61,11 @@ export default async function (
         code: event.code,
         reason: event.reason,
         wasClean: event.wasClean,
-      }, server, context)
+      }, source, context)
     })
 
     server.addEventListener('error', event => {
-      handler.onError(event as Error, server, context)
+      handler.onError(event as Error, source, context)
     })
 
     return new Response(null, {
