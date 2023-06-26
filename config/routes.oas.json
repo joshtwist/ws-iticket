@@ -16,15 +16,13 @@
           "corsPolicy": "anything-goes",
           "handler": {
             "export": "default",
-            "module": "$import(./modules/socket-handler)",
-            "options": {
-              "foo": "Test"
-            }
+            "module": "$import(./modules/socket-handler)"
           }
         },
         "policies": {
           "inbound": []
-        }
+        },
+        "operationId": "d516b1e9-05b6-4ec2-a163-a4e232b05b66"
       },
       "operationId": "cb88c900-1611-4e16-b50b-fdc0fd58dcfc"
     }
