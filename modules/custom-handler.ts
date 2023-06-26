@@ -7,6 +7,7 @@ const sh: SocketHandler = {
   },
   onMessage: async (message, source, context) => {
     context.log.error(`message recevied: '${message}'`);
+    source.send(`echo: ${message}`)
   },
   onClose: async (data, source, context) => {
     context.log.error(`close`, data);
