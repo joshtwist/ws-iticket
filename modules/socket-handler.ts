@@ -1,4 +1,5 @@
 import { ZuploContext, ZuploRequest } from "@zuplo/runtime";
+import sh from "./custom-handler"
 
 type SocketHandlerOptions = {
   handler: {
@@ -22,15 +23,18 @@ export default async function (
 ) {
   try {
 
-    const handler = options.handler.module[options.handler.export] as SocketHandler;
+    // this not working correctly for handlers
+    // const handler = options.handler.module[options.handler.export] as SocketHandler;
 
-    if (!handler || typeof handler.onOpen !== 'function') {
-      throw new Error(`options.handler did not evaluate to a SocketHandler`);
-    }
+    // if (!handler || typeof handler.onOpen !== 'function') {
+    //   throw new Error(`options.handler did not evaluate to a SocketHandler`);
+    // }
 
     // your policy code goes here, and can use the options to perform any
     // configuration
     // See the docs: https://www.zuplo.com/docs/policies/custom-code-inbound
+
+    const handler = sh;
 
     const upgradeHeader = request.headers.get('Upgrade');
     if (!upgradeHeader || upgradeHeader !== 'websocket') {
