@@ -44,7 +44,7 @@ export default async function (
     const webSocketPair = new WebSocketPair();
     const [client, server] = Object.values(webSocketPair);
 
-    const source = client;
+    const source = server;
 
     server.accept();
 
