@@ -65,7 +65,7 @@ export default async function (
     })
 
     setTimeout(() => {
-      handler.onOpen(source, context), 10
+      handler.onOpen(source, context), 1
     });
 
     return new Response(null, {
