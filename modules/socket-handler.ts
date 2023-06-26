@@ -48,10 +48,6 @@ export default async function (
 
     server.accept();
 
-    server.addEventListener('open', async (event) => {
-      handler.onOpen(source, context);
-    })
-
     server.addEventListener('message', async (event) => {
       handler.onMessage(event.data, source, context);
     });
@@ -67,6 +63,10 @@ export default async function (
     server.addEventListener('error', async (event) => {
       handler.onError(event as Error, source, context)
     })
+
+    setTimeout(() => {
+      handler.onOpen(source, context), 10
+    });
 
     return new Response(null, {
       status: 101,
